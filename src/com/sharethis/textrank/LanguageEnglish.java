@@ -43,7 +43,7 @@ import opennlp.tools.util.Sequence;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import org.tartarus.snowball.ext.englishStemmer;
+import org.tartarus.snowball.ext.EnglishStemmer;
 
 import spiaotools.SentParDetector;
 
@@ -75,7 +75,7 @@ public class
     /* */
     public static Tokenizer tokenizer_en = null;
     public static ParserTagger tagger_en = null;
-    public static englishStemmer stemmer_en = null;
+    public static EnglishStemmer stemmer_en = null;
 
 
     /**
@@ -118,7 +118,7 @@ public class
 			     );
 
 	stemmer_en =
-	    new englishStemmer();
+	    new EnglishStemmer();
     }
 
 

@@ -41,7 +41,7 @@ import opennlp.tools.lang.spanish.Tokenizer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import org.tartarus.snowball.ext.spanishStemmer;
+import org.tartarus.snowball.ext.SpanishStemmer;
 
 
 /**
@@ -68,7 +68,7 @@ public class
     public static SentenceDetector splitter_es = null;
     public static Tokenizer tokenizer_es = null;
     public static PosTagger tagger_es = null;
-    public static spanishStemmer stemmer_es = null;
+    public static SpanishStemmer stemmer_es = null;
 
 
     /**
@@ -104,7 +104,7 @@ public class
 	    new PosTagger((new File(path, "opennlp/SpanishPOS.bin.gz")).getPath());
 
 	stemmer_es =
-	    new spanishStemmer();
+	    new SpanishStemmer();
     }
 
 

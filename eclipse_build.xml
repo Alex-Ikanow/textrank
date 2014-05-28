@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project textank">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="${github.root}/textrank/dist/textrank-en.jar" filesetmanifest="mergewithoutmain">
+            <fileset dir="${github.root}/textrank/bin/"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/commons-math-1.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/jaxen-1.1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/jdom-1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/jwnl.1.3rc3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/maxent-2.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/opennlp-tools-1.3.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/sax2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/sharethis-common.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/sptoolkit.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${github.root}/textrank/lib/trove-2.0.2.jar"/>
+        </jar>
+    </target>
+</project>

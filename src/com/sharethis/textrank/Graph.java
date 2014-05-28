@@ -140,8 +140,8 @@ public class
 	    final double standard_error =
 		dist_stats.getStandardDeviation() / Math.sqrt((double) dist_stats.getN());
 
-	    if (LOG.isInfoEnabled()) {
-		LOG.info("iteration: " + k + " error: " + standard_error);
+	    if (LOG.isDebugEnabled()) {
+		LOG.debug("iteration: " + k + " error: " + standard_error);
 	    }
 
 	    // swap in new rank values

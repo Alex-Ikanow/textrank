@@ -109,6 +109,7 @@ public class
     protected long start_time = 0L;
     protected long elapsed_time = 0L;
 
+    protected Exception wordnet_error = null;
 
     /**
      * Constructor.
@@ -119,7 +120,14 @@ public class
 	throws Exception
     {
 	lang = LanguageModel.buildLanguage(res_path, lang_code);
-	WordNet.buildDictionary(res_path, lang_code);
+	try {
+		WordNet.buildDictionary(res_path, lang_code);
+	}
+	catch (Exception e) {
+		// Infinit.e-specific code:
+		wordnet_error = e;
+		// This is fine until someone tries to use wordnet
+	}
     }
 
 
@@ -137,6 +145,11 @@ public class
 
 	this.text = text;
 	this.use_wordnet = use_wordnet;
+	
+	// Infinit.e-specific code:
+	if (use_wordnet && (null != this.wordnet_error)) { // (failed to load wordnet)
+		throw this.wordnet_error;
+	}
     }
 
 
@@ -187,9 +200,9 @@ public class
 
 	markTime("basic_textrank");
 
-	if (LOG.isInfoEnabled()) {
-	    LOG.info("TEXT_BYTES:\t" + text.length());
-	    LOG.info("GRAPH_SIZE:\t" + graph.size());
+	if (LOG.isDebugEnabled()) {
+	    LOG.debug("TEXT_BYTES:\t" + text.length());
+	    LOG.debug("GRAPH_SIZE:\t" + graph.size());
 	}
 
 	//////////////////////////////////////////////////
@@ -346,8 +359,8 @@ public class
     {
 	elapsed_time = System.currentTimeMillis() - start_time;
 
-	if (LOG.isInfoEnabled()) {
-	    LOG.info("ELAPSED_TIME:\t" + elapsed_time + "\t" + label);
+	if (LOG.isDebugEnabled()) {
+	    LOG.debug("ELAPSED_TIME:\t" + elapsed_time + "\t" + label);
 	}
     }
 
